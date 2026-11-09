@@ -1,0 +1,32 @@
+/* src/themes.css — المتغيرات الافتراضية الأساسية (Deep Space Fallback) */
+
+:root {
+  --status-green: #11fd8b;
+  --status-yellow: #f5b800;
+  --status-red: #ff5252;
+
+  --accent-rgb: 0 212 255;
+  --accent2-rgb: 124 77 255;
+  --accent-cyan: #00d4ff;
+  --accent-purple: #7c4dff;
+  --accent-blue: #4da6ff;
+
+  --bg-dark: #05060f;
+  --bg-card: rgba(20, 22, 50, 0.78);
+  --bg-card-hover: rgba(30, 34, 74, 0.92);
+
+  --text-main: #e8ecf5;
+  --text-muted: #8b95b5;
+  --text-strong: #ffffff;
+  --btn-text: #05060f;
+
+  --border: rgba(124, 77, 255, 0.22);
+  --border-bright: rgba(0, 212, 255, 0.5);
+
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(42, 27, 92, 0.55), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(20, 30, 80, 0.45), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 20% 50%, rgba(0, 212, 255, 0.12), transparent 70%),
+    #05060f;
+  --stars-opacity: 1;
+}

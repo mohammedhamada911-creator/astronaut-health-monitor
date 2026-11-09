@@ -1,0 +1,711 @@
+/* ==========================================================
+   space-theme.css — 3 ثيمات قابلة للتبديل
+   الثيم بيتحدد من html[data-theme="..."] (بيتظبط من App.jsx)
+   deep-space | galaxy | daylight
+   ========================================================== */
+
+/* ---------- 1) Deep Space: سيان فضائي + بنفسجي عميق ---------- */
+html[data-theme="deep-space"] {
+  --accent-rgb: 0 212 255;
+  --accent2-rgb: 124 77 255;
+  --accent-cyan: #00d4ff;
+  --accent-purple: #7c4dff;
+
+  --bg-card: rgba(20, 22, 50, 0.78);
+  --bg-card-hover: rgba(30, 34, 74, 0.92);
+  --border: rgba(124, 77, 255, 0.22);
+  --border-bright: rgba(0, 212, 255, 0.5);
+
+  --text-main: #e8ecf5;
+  --text-muted: #8b95b5;
+  --text-strong: #ffffff;
+  --btn-text: #05060f;
+
+  --status-green: #11fd8b;
+  --status-yellow: #f5b800;
+  --status-red: #ff5252;
+
+  --page-bg:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(42, 27, 92, 0.55), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(20, 30, 80, 0.45), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 20% 50%, rgba(0, 212, 255, 0.12), transparent 70%),
+    #05060f;
+  --hero-bg: linear-gradient(160deg, rgb(0 212 255 / 0.12), rgb(124 77 255 / 0.10) 60%, transparent);
+  --card-shadow: 0 10px 34px rgba(3, 5, 20, 0.65);
+  --stars-opacity: 1;
+}
+
+/* ---------- 2) Galaxy: بنفسجي + فوشيا ---------- */
+html[data-theme="galaxy"] {
+  --accent-rgb: 232 121 249;
+  --accent2-rgb: 139 92 246;
+  --accent-cyan: #e879f9;
+  --accent-purple: #8b5cf6;
+
+  --bg-card: rgba(36, 22, 70, 0.76);
+  --bg-card-hover: rgba(52, 32, 98, 0.92);
+  --border: rgba(196, 181, 253, 0.18);
+  --border-bright: rgba(232, 121, 249, 0.55);
+
+  --text-main: #ede9fe;
+  --text-muted: #b4a7dc;
+  --text-strong: #ffffff;
+  --btn-text: #1e0833;
+
+  --status-green: #34d399;
+  --status-yellow: #fcd34d;
+  --status-red: #fb7185;
+
+  --page-bg:
+    radial-gradient(1000px 600px at 20% -10%, rgb(232 121 249 / 0.20), transparent 60%),
+    radial-gradient(900px 600px at 90% 100%, rgb(139 92 246 / 0.22), transparent 60%),
+    #0f0a26;
+  --hero-bg: linear-gradient(160deg, rgb(232 121 249 / 0.14), rgb(139 92 246 / 0.10) 60%, transparent);
+  --card-shadow: 0 10px 34px rgba(10, 4, 30, 0.6);
+  --stars-opacity: 1;
+}
+
+/* ---------- 3) Daylight: فاتح ونظيف ---------- */
+html[data-theme="daylight"] {
+  --accent-rgb: 2 132 199;
+  --accent2-rgb: 79 70 229;
+  --accent-cyan: #0284c7;
+  --accent-purple: #4f46e5;
+
+  --bg-card: rgba(255, 255, 255, 0.88);
+  --bg-card-hover: #ffffff;
+  --border: rgba(15, 23, 42, 0.12);
+  --border-bright: rgba(2, 132, 199, 0.5);
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-strong: #0f172a;
+  --btn-text: #ffffff;
+
+  --status-green: #16a34a;
+  --status-yellow: #d97706;
+  --status-red: #dc2626;
+
+  --page-bg:
+    radial-gradient(1000px 500px at 50% -10%, rgb(2 132 199 / 0.14), transparent 60%),
+    linear-gradient(180deg, #f1f6fd, #e4ecf8);
+  --hero-bg: linear-gradient(160deg, rgb(2 132 199 / 0.10), rgb(79 70 229 / 0.06) 60%, transparent);
+  --card-shadow: 0 8px 24px rgba(30, 58, 110, 0.12);
+  --stars-opacity: 0;
+}
+
+/* ==========================================================
+   تطبيق المتغيرات على الصفحة
+   ========================================================== */
+
+html[data-theme] body {
+  background: var(--page-bg) !important;
+  background-attachment: fixed !important;
+  color: var(--text-main);
+}
+
+/* ===== الهيدر كلوحة زجاجية ===== */
+html[data-theme] .app-header {
+  background: var(--hero-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 24px 32px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(10px);
+}
+
+html[data-theme] .app-header::after {
+  bottom: -1px;
+  width: 180px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  box-shadow: 0 0 18px rgb(var(--accent-rgb) / 0.8);
+}
+
+html[data-theme] .title-text {
+  background: linear-gradient(135deg, var(--text-strong) 20%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html[data-theme] .rocket-emoji {
+  filter: drop-shadow(0 0 12px rgb(var(--accent-rgb) / 0.7));
+}
+
+html[data-theme] .app-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 12px;
+}
+
+/* ===== عناوين الأقسام ===== */
+html[data-theme] .section-title {
+  padding-right: 14px;
+  border-right: 4px solid var(--accent-cyan);
+  color: var(--text-main);
+  font-size: 19px;
+}
+
+/* ===== الكروت ===== */
+html[data-theme] .indicator-card,
+html[data-theme] .chart-container,
+html[data-theme] .bodymap-figure,
+html[data-theme] .bodymap-details,
+html[data-theme] .guidance-card {
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+}
+
+html[data-theme] .indicator-card::before,
+html[data-theme] .chart-container::before {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+  opacity: 0.9;
+}
+
+html[data-theme] .indicator-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-bright);
+  box-shadow: 0 14px 40px rgb(var(--accent-rgb) / 0.22), 0 0 0 1px rgb(var(--accent-rgb) / 0.25);
+}
+
+html[data-theme] .value-number {
+  color: var(--text-strong);
+  font-size: 34px;
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+}
+
+html[data-theme] .indicator-label,
+html[data-theme] .value-unit {
+  color: var(--text-muted);
+}
+
+html[data-theme] .card-history {
+  border-top-color: var(--border);
+}
+
+/* ===== الأزرار ===== */
+html[data-theme] .btn-refresh {
+  color: var(--btn-text);
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+  box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.4);
+}
+
+html[data-theme] .btn-refresh:hover {
+  box-shadow: 0 8px 32px rgb(var(--accent-rgb) / 0.6), 0 0 0 1px rgb(var(--accent-rgb) / 0.5);
+}
+
+html[data-theme] .btn-auto {
+  color: var(--text-main);
+  background: rgb(var(--accent-rgb) / 0.06);
+}
+
+html[data-theme] .btn-auto:hover {
+  background: rgb(var(--accent-rgb) / 0.14);
+  border-color: var(--accent-cyan);
+}
+
+html[data-theme] .btn-auto.active {
+  color: var(--status-red);
+  background: color-mix(in srgb, var(--status-red) 14%, transparent);
+  border-color: var(--status-red);
+}
+
+html[data-theme] .btn-sound {
+  background: rgb(var(--accent-rgb) / 0.1);
+  border-color: var(--border-bright);
+}
+
+/* ===== خريطة الجسم ===== */
+html[data-theme] .body-region {
+  color: var(--text-main);
+  background: rgb(var(--accent-rgb) / 0.04);
+}
+
+html[data-theme] .body-region:hover {
+  background: rgb(var(--accent-rgb) / 0.10);
+}
+
+html[data-theme] .body-region.active {
+  background: rgb(var(--accent-rgb) / 0.16);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 22px rgb(var(--accent-rgb) / 0.28);
+}
+
+html[data-theme] .details-header h3,
+html[data-theme] .guidance-header h3,
+html[data-theme] .guidance-section p,
+html[data-theme] .details-section p {
+  color: var(--text-main);
+}
+
+html[data-theme] .indicator-list li {
+  background: rgb(var(--accent-rgb) / 0.05);
+}
+
+/* ===== التوجيهات ===== */
+html[data-theme] .guidance-action {
+  background: rgb(var(--accent-rgb) / 0.08);
+  border-right-color: var(--accent-cyan);
+}
+
+html[data-theme] .guidance-value {
+  background: rgb(var(--accent-rgb) / 0.08);
+}
+
+html[data-theme] .guidance-red {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--status-red) 14%, transparent) 0%, var(--bg-card) 45%);
+}
+
+html[data-theme] .guidance-yellow {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--status-yellow) 14%, transparent) 0%, var(--bg-card) 45%);
+}
+
+html[data-theme] .guidance-all-clear {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--status-green) 14%, transparent) 0%, var(--bg-card) 50%);
+}
+
+html[data-theme] .live-indicator {
+  background: color-mix(in srgb, var(--status-red) 14%, transparent);
+}
+
+/* ==========================================================
+   أزرار اختيار الثيم
+   ========================================================== */
+.theme-picker {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.theme-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-chip:hover {
+  color: var(--text-main);
+  border-color: var(--border-bright);
+  transform: translateY(-1px);
+}
+
+.theme-chip.active {
+  color: var(--btn-text);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgb(var(--accent-rgb) / 0.4);
+}
+
+/* ==========================================================
+   الفوتر (اسم المطوّر)
+   ========================================================== */
+.app-footer {
+  margin-top: 40px;
+  padding: 28px 16px 8px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.app-footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  box-shadow: 0 0 12px rgb(var(--accent-rgb) / 0.7);
+}
+
+.app-footer p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.footer-name {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-sub {
+  margin-top: 6px !important;
+  font-size: 12px !important;
+  opacity: 0.8;
+}
+
+/* ===== رقم العدّاد التنازلي ===== */
+.countdown-number {
+  display: inline-block;
+  min-width: 1.2em;
+  text-align: center;
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 15px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================
+   الرسوم البيانية المباشرة: النبض + باقي المؤشرات جنب بعض
+   ========================================================== */
+.live-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+@media (max-width: 1000px) {
+  .live-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.chart-caption {
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.mini-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 560px) {
+  .mini-charts-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.mini-chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 14px 10px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.mini-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mini-chart-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.mini-chart-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mini-chart-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-chart-reading {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.mini-chart-value {
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-strong, var(--text-main));
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-chart-unit {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.mini-chart-canvas {
+  position: relative;
+  height: 130px;
+}
+
+/* ==========================================================
+   اختيار المؤشرات في الرسم البياني
+   ========================================================== */
+.series-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.series-chip {
+  --chip-color: var(--accent-cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.series-chip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--chip-color);
+  opacity: 0.45;
+  transition: all 0.2s ease;
+}
+
+.series-chip:hover {
+  color: var(--text-main);
+  border-color: var(--chip-color);
+}
+
+.series-chip.active {
+  color: var(--text-strong, var(--text-main));
+  border-color: var(--chip-color);
+  background: color-mix(in srgb, var(--chip-color) 16%, transparent);
+}
+
+.series-chip.active .series-chip-dot {
+  opacity: 1;
+  box-shadow: 0 0 8px var(--chip-color);
+}
+
+.series-chip-all {
+  margin-right: auto;
+  border-style: dashed;
+}
+
+.series-note {
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ==========================================================
+   لوحة سيناريوهات المحاكاة الاحترافية (Mission Scenarios)
+   ========================================================== */
+.presets-bar {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.presets-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.presets-badge {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: var(--accent-cyan);
+  background: rgb(var(--accent-rgb) / 0.12);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
+}
+
+.presets-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.presets-chips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 820px;
+}
+
+@media (max-width: 768px) {
+  .presets-chips {
+    grid-template-columns: 1fr;
+  }
+}
+
+.preset-chip {
+  --preset-color: var(--accent-cyan);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  font-family: 'Cairo', sans-serif;
+  text-align: right;
+  color: var(--text-main);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+/* شريط لوني جانبي لكل زر */
+.preset-chip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--preset-color);
+  opacity: 0.65;
+  transition: width 0.25s ease, opacity 0.25s ease;
+}
+
+.preset-icon {
+  font-size: 24px;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--preset-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--preset-color) 28%, transparent);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.preset-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.preset-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--text-strong, var(--text-main));
+  line-height: 1.3;
+}
+
+.preset-sub {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.4px;
+  opacity: 0.85;
+}
+
+.preset-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--preset-color);
+  opacity: 0.4;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+/* تخصيص ألوان كل سيناريو */
+.preset-nominal {
+  --preset-color: var(--status-green);
+}
+
+.preset-eva {
+  --preset-color: var(--status-yellow);
+}
+
+.preset-emergency {
+  --preset-color: var(--status-red);
+}
+
+/* تأثيرات التمرير والتفعيل (Hover & Active) */
+.preset-chip:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--preset-color) 65%, transparent);
+  background: color-mix(in srgb, var(--preset-color) 10%, var(--bg-card));
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--preset-color) 20%, transparent);
+}
+
+.preset-chip:hover .preset-icon {
+  transform: scale(1.08);
+}
+
+.preset-chip.active {
+  border-color: var(--preset-color);
+  background: color-mix(in srgb, var(--preset-color) 16%, var(--bg-card));
+  box-shadow:
+    0 10px 30px color-mix(in srgb, var(--preset-color) 28%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--preset-color) 40%, transparent);
+}
+
+.preset-chip.active::before {
+  width: 6px;
+  opacity: 1;
+}
+
+.preset-chip.active .preset-dot {
+  opacity: 1;
+  box-shadow: 0 0 10px var(--preset-color), 0 0 18px var(--preset-color);
+}

@@ -1,0 +1,1114 @@
+/* ===== الحاوية العامة ===== */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== الهيدر ===== */
+.app-header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.app-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  box-shadow: 0 0 12px var(--accent-cyan);
+}
+
+.app-header h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rocket-emoji {
+  font-size: 36px;
+  -webkit-text-fill-color: initial;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}
+
+.title-text {
+  background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-subtitle {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== شريط الحالة الإجمالية للنظام (Overall Mission Status) ===== */
+.mission-status-banner {
+   --banner-color: var(--status-green);
+  max-width: 760px;
+  margin: 0 auto 22px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--banner-color) 40%, var(--border));
+  background: color-mix(in srgb, var(--banner-color) 10%, var(--bg-card));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  text-align: right;
+  transition: all 0.25s ease;
+}
+
+.mission-status-banner.status-nominal {
+  --banner-color: var(--status-green);
+}
+
+.mission-status-banner.status-warning {
+  --banner-color: var(--status-yellow);
+}
+
+.mission-status-banner.status-critical {
+  --banner-color: var(--status-red);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--status-red) 25%, transparent);
+}
+
+.mission-status-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.mission-status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.mission-status-title {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--text-strong, var(--text-main));
+}
+
+.mission-status-detail {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.mission-preset-tag {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-bright);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+
+/* ===== الأقسام ===== */
+.section {
+  margin-bottom: 48px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== شبكة البطاقات ===== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* ===== البطاقة ===== */
+.indicator-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.indicator-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+  opacity: 0.5;
+}
+
+.indicator-card:hover {
+  transform: translateY(-3px);
+  background: var(--bg-card-hover);
+  border-color: var(--border-bright);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.12), 0 0 0 1px rgba(0, 212, 255, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.indicator-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ===== النقطة الملونة مع توهج ===== */
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: inherit;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.75;
+  z-index: -1;
+}
+
+/* ===== القيمة ===== */
+.card-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.value-number {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.value-unit {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.status-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* ===== حاوية الرسم البياني ===== */
+.chart-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+.chart-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  opacity: 0.6;
+}
+
+/* ===== مجموعة الأزرار الرئيسية (موحدة بدون تكرار) ===== */
+.button-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.btn-refresh,
+.btn-auto {
+  min-width: 220px;
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.25s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.btn-refresh {
+  color: #ffffff;
+  background: linear-gradient(135deg, #00d4ff 0%, #7c4dff 100%);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.35);
+}
+
+.btn-refresh:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(0, 212, 255, 0.55), 0 0 0 1px rgba(0, 212, 255, 0.4);
+  filter: brightness(1.1);
+}
+
+.btn-refresh:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-auto {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+}
+
+.btn-auto:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.btn-auto.active {
+  background: rgba(255, 82, 82, 0.15);
+  border-color: var(--status-red);
+  color: var(--status-red);
+}
+
+/* ===== زر الصوت ===== */
+.btn-sound {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid var(--border-bright);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.btn-sound:hover {
+  background: rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-sound.muted {
+  background: rgba(255, 82, 82, 0.1);
+  border-color: var(--status-red);
+  opacity: 0.7;
+}
+
+.btn-sound.muted:hover {
+  opacity: 1;
+  background: rgba(255, 82, 82, 0.2);
+}
+
+/* ===== خريطة الجسم ===== */
+.bodymap-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .bodymap-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bodymap-figure,
+.bodymap-details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  min-height: 420px;
+}
+
+.bodymap-title {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bodymap-silhouette {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.body-region {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  color: var(--text-main);
+  text-align: right;
+}
+
+.body-region:hover {
+  background: rgba(0, 212, 255, 0.06);
+  border-color: var(--border-bright);
+  transform: translateX(4px);
+}
+
+.body-region.active {
+  background: rgba(0, 212, 255, 0.12);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.region-icon {
+  font-size: 28px;
+}
+
+.region-name {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.region-status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+  flex-shrink: 0;
+}
+
+.bodymap-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 380px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 64px;
+  opacity: 0.3;
+  margin-bottom: 12px;
+}
+
+.details-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.details-icon {
+  font-size: 36px;
+}
+
+.details-header h3 {
+  margin: 0;
+  font-size: 22px;
+  color: var(--text-main);
+}
+
+.details-section h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--accent-cyan);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.details-section p {
+  margin: 0;
+  color: var(--text-main);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.explanation-text {
+  color: var(--text-muted) !important;
+  font-size: 13px !important;
+}
+
+.indicator-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.indicator-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.mini-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ind-label {
+  color: var(--text-muted);
+}
+
+.ind-value {
+  margin-right: auto;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ===== التوجيهات القابلة للتنفيذ ===== */
+.guidance-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guidance-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-right-width: 4px;
+  border-radius: 14px;
+  padding: 22px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guidance-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.guidance-red {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 82, 82, 0.08) 0%,
+    var(--bg-card) 40%
+  );
+}
+
+.guidance-yellow {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 193, 7, 0.08) 0%,
+    var(--bg-card) 40%
+  );
+}
+
+.guidance-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.guidance-badge {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #05060f;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.guidance-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  flex: 1;
+}
+
+.guidance-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.guidance-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guidance-section {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.guidance-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.guidance-section h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 0.3px;
+}
+
+.guidance-section p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.guidance-action {
+  padding: 12px 14px;
+  background: rgba(0, 212, 255, 0.06);
+  border-radius: 10px;
+  border-right: 2px solid var(--accent-cyan);
+}
+
+/* حالة "كل شيء طبيعي" */
+.guidance-all-clear {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 230, 118, 0.08) 0%,
+    var(--bg-card) 50%
+  );
+  border: 1px solid var(--border);
+  border-right: 4px solid var(--status-green);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.all-clear-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.guidance-all-clear h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  color: var(--status-green);
+}
+
+.guidance-all-clear p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ===== مؤشر "مباشر" ===== */
+.live-indicator {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 14px;
+  background: rgba(255, 82, 82, 0.15);
+  border: 1px solid var(--status-red);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--status-red);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== سجل القراءات في البطاقة ===== */
+.card-history {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.history-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.history-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-main);
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.history-item:last-of-type {
+  opacity: 1;
+  color: var(--accent-cyan);
+}
+
+.history-arrow {
+  color: var(--text-muted);
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+/* ===== توافق الشاشات الصغيرة (Responsive) ===== */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px 14px 56px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+
+  .rocket-emoji {
+    font-size: 28px;
+  }
+
+  .button-group {
+    width: 100%;
+  }
+
+  .btn-refresh,
+  .btn-auto {
+    min-width: 0;
+    flex: 1 1 180px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .mission-status-banner {
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+/* ===== زر "عن المشروع" ===== */
+.btn-about {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(124, 77, 255, 0.12);
+  border: 1px solid var(--border-bright);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.btn-about:hover {
+  background: rgba(124, 77, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ===== شريط الحالة العامة للمهمة ===== */
+.mission-preset-tag:hover {
+  background: rgba(0, 212, 255, 0.16);
+  border-color: var(--accent-cyan);
+}
+
+/* ==========================================================
+   تحسينات الواجهة: ملخص الحالة، الاتجاهات، المؤشرات المصغّرة
+   ========================================================== */
+
+/* ----- ملخص أعداد الحالات داخل شريط المهمة ----- */
+.status-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.pill-green {
+  color: var(--status-green);
+  background: color-mix(in srgb, var(--status-green) 12%, transparent);
+  border-color: color-mix(in srgb, var(--status-green) 38%, transparent);
+}
+
+.pill-yellow {
+  color: var(--status-yellow);
+  background: color-mix(in srgb, var(--status-yellow) 12%, transparent);
+  border-color: color-mix(in srgb, var(--status-yellow) 38%, transparent);
+}
+
+.pill-red {
+  color: var(--status-red);
+  background: color-mix(in srgb, var(--status-red) 12%, transparent);
+  border-color: color-mix(in srgb, var(--status-red) 38%, transparent);
+}
+
+/* ----- آخر وقت تحديث + مؤشر العد التنازلي ----- */
+.header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.last-updated {
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.header-meta .live-indicator {
+  margin-top: 0;
+}
+
+/* ----- الاتجاه في بطاقات المؤشرات ----- */
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.card-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-trend .trend-arrow {
+  font-size: 11px;
+  line-height: 1;
+}
+
+.card-trend.trend-up {
+  color: var(--accent-cyan);
+  border-color: color-mix(in srgb, var(--accent-cyan) 35%, var(--border));
+}
+
+.card-trend.trend-down {
+  color: var(--accent-purple);
+  border-color: color-mix(in srgb, var(--accent-purple) 35%, var(--border));
+}
+
+/* ----- أزرار إعادة الضبط والتصدير ----- */
+.btn-reset,
+.btn-export {
+  min-height: 52px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-reset:hover {
+  transform: translateY(-2px);
+  color: var(--status-yellow);
+  border-color: var(--status-yellow);
+  background: color-mix(in srgb, var(--status-yellow) 12%, transparent);
+}
+
+.btn-export {
+  border-color: color-mix(in srgb, var(--status-green) 42%, var(--border));
+  background: color-mix(in srgb, var(--status-green) 8%, transparent);
+}
+
+.btn-export:hover {
+  transform: translateY(-2px);
+  color: var(--status-green);
+  border-color: var(--status-green);
+  background: color-mix(in srgb, var(--status-green) 16%, transparent);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--status-green) 18%, transparent);
+}
+
+/* ----- شريط المؤشرات المصغّرة (Sparklines) ----- */
+.vitals-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.vitals-strip .mini-chart-card {
+  min-width: 0;
+  padding: 14px;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vitals-strip .mini-chart-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-bright);
+}
+
+.vitals-strip .mini-chart-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.vitals-strip .mini-chart-label {
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.vitals-strip .mini-chart-reading {
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.vitals-strip .mini-chart-value {
+  font-size: 16px;
+}
+
+.vitals-strip .mini-chart-canvas {
+  height: 58px;
+  margin: 2px 0;
+}
+
+.vitals-strip .sparkline {
+  width: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.sparkline-empty {
+  width: 100%;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.mini-chart-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding-top: 6px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.mini-chart-en {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  letter-spacing: 0.3px;
+}
+
+.mini-trend {
+  flex-shrink: 0;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-trend.trend-up {
+  color: var(--accent-cyan);
+}
+
+.mini-trend.trend-down {
+  color: var(--accent-purple);
+}
+
+.mini-trend.trend-flat {
+  color: var(--text-muted);
+}
+
+/* تلوين حدود/قيم المؤشرات حسب الحالة */
+.vitals-strip .mini-red {
+  border-color: color-mix(in srgb, var(--status-red) 38%, var(--border));
+}
+
+.vitals-strip .mini-yellow {
+  border-color: color-mix(in srgb, var(--status-yellow) 34%, var(--border));
+}
+
+.vitals-strip .mini-red .mini-chart-value {
+  color: var(--status-red);
+}
+
+.vitals-strip .mini-yellow .mini-chart-value {
+  color: var(--status-yellow);
+}
+
+/* ----- حالات التركيز للوصولية ----- */
+:where(button, [role='button'], a):focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1000px) {
+  .vitals-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vitals-strip > :last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .vitals-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .btn-reset,
+  .btn-export {
+    flex: 1 1 140px;
+  }
+
+  .status-summary {
+    justify-content: center;
+  }
+
+  .header-meta {
+    gap: 8px;
+  }
+}
+
